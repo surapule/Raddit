@@ -1,0 +1,16 @@
+<%= div_for(comment) do %>
+	<div class="comments_wrapper clearfix">
+		<div class="pull-left">
+			<p class="lead"><%= comment.body %></p>
+			
+				<p></small><p><small>Envoyé, il y a <strong><%= time_ago_in_words(comment.created_at) %> </strong> par <%= comment.user.name %></small></p>
+			
+		</div>
+
+		<div class="btn-group pull-right">
+			<% if comment.user == current_user %>
+				<%= link_to 'Supprimer', comment, method: :delete, data: { confirm:"Etes vous sur?" }, class:"btn btn-sm btn-default" %>
+			<% end %>
+		</div>
+	</div>
+<% end %>
